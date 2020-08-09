@@ -1,6 +1,11 @@
 import React from "react"
 import { TextField, Box } from "@material-ui/core"
-import { makeStyles } from "@material-ui/core/styles"
+import {
+  makeStyles,
+  InputAdornment,
+  IconButton,
+} from "@material-ui/core/styles"
+import Visibility from "@material-ui/icons/Visibility"
 
 const useStyles = makeStyles({
   form: {
@@ -23,6 +28,11 @@ export default function SearchBar() {
       <TextField
         InputProps={{
           className: classes.input,
+          endAdornment: (
+            <InputAdornment position="end">
+              <Visibility />
+            </InputAdornment>
+          ),
         }}
         fullWidth
         id="standard-basic"
