@@ -2,9 +2,9 @@ import React from "react"
 import TopNav from "../components/Layout/TopNav"
 import SearchBar from "../components/Forms/SearchBar"
 import RecommandCard from "../components/Layout/RecommandCard"
-import { Grid, Box, makeStyles } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core"
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   container: {
     display: "flex",
     flexDirection: "column",
