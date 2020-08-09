@@ -52,7 +52,7 @@ export default function TopNav() {
         <Typography color="secondary" variant="h6" className={classes.title}>
           DICTIONARY
         </Typography>
-        <Button color="secondary">Login</Button>
+        <Button color="secondary">LIST</Button>
       </Toolbar>
     </ThemeProvider>
   )
