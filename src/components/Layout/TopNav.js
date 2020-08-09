@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => {
     },
     title: {
       flexGrow: 1,
+      fontSize: 20,
     },
   }
 })
@@ -49,10 +50,9 @@ export default function TopNav() {
         >
           <MenuBookIcon />
         </IconButton>
-        <Typography color="secondary" variant="h6" className={classes.title}>
+        <Button color="secondary" className={classes.title}>
           DICTIONARY
-        </Typography>
-        <Button color="secondary">LIST</Button>
+        </Button>
       </Toolbar>
     </ThemeProvider>
   )

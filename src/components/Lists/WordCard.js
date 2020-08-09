@@ -4,7 +4,8 @@ import { Grid, Link, Card, CardContent, CardMedia } from "@material-ui/core"
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    width: 345,
+    padding: 10,
   },
   link: {
     padding: "12px",
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
   },
 })
 
-export default function ImgMediaCard({ link, image, children }) {
+export default function WordCard({ link, image, children }) {
   const classes = useStyles()
 
   return (
