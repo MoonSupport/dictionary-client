@@ -1,14 +1,19 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
-import { Grid, Button, Card, CardContent, CardMedia } from "@material-ui/core"
+import { Grid, Link, Card, CardContent, CardMedia } from "@material-ui/core"
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
   },
+  link: {
+    padding: "12px",
+    cursor: "pointer",
+    fontSize: "14px",
+  },
 })
 
-export default function ImgMediaCard({ children }) {
+export default function ImgMediaCard({ link, image, children }) {
   const classes = useStyles()
 
   return (
@@ -17,7 +22,7 @@ export default function ImgMediaCard({ children }) {
         component="img"
         alt="Contemplative Reptile"
         height="140"
-        image="/main_frontend.jpg"
+        image={image}
         title="Contemplative Reptile"
       />
       <CardContent>
@@ -25,9 +30,9 @@ export default function ImgMediaCard({ children }) {
           {children}
         </Grid>
       </CardContent>
-      <Button size="small" color="primary">
+      <Link underline="none" className={classes.link} href={link}>
         더보기
-      </Button>
+      </Link>
     </Card>
   )
 }

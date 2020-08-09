@@ -1,7 +1,7 @@
 import React from "react"
 import TopNav from "../components/Layout/TopNav"
 import SearchBar from "../components/Forms/SearchBar"
-import WordPage from "../components/Layout/WordPage"
+import WordPage from "../components/Lists/WordCard"
 import { Grid, Box } from "@material-ui/core"
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <TopNav />
       <SearchBar />
-      <WordPage>
+      <WordPage image="/main_frontend.jpg">
         <Grid item xs={6}>
           <Box>canonicalize</Box>
         </Grid>
