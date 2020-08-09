@@ -1,11 +1,7 @@
 import React from "react"
-import { TextField, Box } from "@material-ui/core"
-import {
-  makeStyles,
-  InputAdornment,
-  IconButton,
-} from "@material-ui/core/styles"
-import Visibility from "@material-ui/icons/Visibility"
+import { TextField, Box, InputAdornment } from "@material-ui/core"
+import { makeStyles, IconButton } from "@material-ui/core/styles"
+import SearchIcon from "@material-ui/icons/Search"
 
 const useStyles = makeStyles({
   form: {
@@ -30,12 +26,11 @@ export default function SearchBar() {
           className: classes.input,
           endAdornment: (
             <InputAdornment position="end">
-              <Visibility />
+              <SearchIcon />
             </InputAdornment>
           ),
         }}
         fullWidth
-        id="standard-basic"
       />
     </form>
   )
