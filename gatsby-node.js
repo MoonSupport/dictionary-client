@@ -1,15 +1,34 @@
 const fs = require("fs")
 const yaml = require("js-yaml")
-exports.createPages = ({ actions }) => {
+exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
-  const ymlDoc = yaml.safeLoad(fs.readFileSync("./src/contents/post.json", "utf-8"))
-  ymlDoc.forEach(element => {
+  const blogPostTemplate = require.resolve(`./src/templates/blogTemplate.js`)
+  const result = await graphql(`
+    {
+      allMarkdownRemark(limit: 1000) {
+        edges {
+          node {
+            frontmatter {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
+  }
+
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
-      path: element.path,
-      component: require.resolve("./src/templates/basicTemplate.js"),
+      path: node.frontmatter.slug,
+      component: blogPostTemplate,
       context: {
-        pageContent: element.content,
-        links: element.links,
+        // additional data can be passed via context
+        slug: node.frontmatter.slug,
       },
     })
   })
