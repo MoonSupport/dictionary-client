@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+/* coupon */
+.coupon{
+	max-width:720px;
+	margin:0 auto;
+	padding:8.8px;
+}
+.coupon > .coupon-box1{
+	background:#fafafa;
+	border:1px solid #e5e5e5;
+	border-radius:5px;
+	padding:14px 12px;
+}
+.coupon > .coupon-box1:after{content:""; display:block; clear:both;}
+.coupon > .coupon-box1 > p{
+	float:left;
+	width:50%;
+	box-sizing:border-box;
+}
+.coupon > .coupon-box1 > p:first-child{
+	padding:0 12px 0 0;
+	border-right:1px solid #e5e5e5;
+}
+.coupon > .coupon-box1 > p:last-child{
+	padding:0 0 0 12px;
+}
+.coupon > .coupon-box1 > p span:first-child{
+	float:left;
+}
+.coupon > .coupon-box1 > p span:last-child{
+	float:right;
+	color:#484848;
+}
+.coupon > .coupon-box1 > p span:last-child > strong{
+	color:#0f4793;
+}
+
+/* GSAT 이벤트 */
+.m_eventbox{ max-width:720px; margin:0 auto; }
+.m_eventbox img{ display:block; width:100%; }
