@@ -15,5 +15,14 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "Dictionary API",
+        short_name: "Dictionary",
+        start_url: "/",
+        icon: "static/favicon.ico",
+      },
+    },
   ],
 }
