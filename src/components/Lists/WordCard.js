@@ -6,6 +6,7 @@ const useStyles = makeStyles({
   root: {
     width: 345,
     padding: 10,
+    margin: "0 auto",
   },
   link: {
     padding: "12px",

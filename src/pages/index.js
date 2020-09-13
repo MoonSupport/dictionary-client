@@ -1,7 +1,7 @@
 import React from "react"
-import TopNav from "../components/Layout/TopNav"
+import AppFrame from "../components/Layout/AppFrame"
 import SearchBar from "../components/Forms/SearchBar"
-import RecommandCard from "../components/Layout/RecommandCard"
+import RecommandCard from "../components/Lists/RecommandCard/index"
 import { makeStyles } from "@material-ui/core"
 
 const useStyles = makeStyles(() => ({
@@ -16,10 +16,11 @@ const useStyles = makeStyles(() => ({
 export default function Home() {
   const classes = useStyles()
   return (
-    <div className={classes.container}>
-      <TopNav />
-      <SearchBar />
-      <RecommandCard />
-    </div>
+    <AppFrame>
+      <div className={classes.container}>
+        <SearchBar />
+        <RecommandCard />
+      </div>
+    </AppFrame>
   )
 }
