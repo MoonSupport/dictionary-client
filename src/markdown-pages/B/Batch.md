@@ -5,7 +5,7 @@ origin:  Batch
 pronunciation:  배치
 mean:  일괄
 relation: [데이터처리(GrahpqlDataLoader) ,인쇄 ,데이터베이스 ,이미지처리 ,변환 ]
-slug: /B/Batch
+slug: /b/batch
 ---
 
 <content>
