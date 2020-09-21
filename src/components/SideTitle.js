@@ -9,8 +9,7 @@ const useStyles = makeStyles({
     sideTitle : {
         width: '10vw',
         height:'100vh',
-        backgroundImage: "url('/background-texture.png')",
-        backgroundRepeat: 'repeat',
+        backgroundColor: '#CDE8EF',
         display:'flex',
         flexDirection: 'column',
     },
@@ -29,12 +28,13 @@ const useStyles = makeStyles({
 
     },
     sideItem: {
-        width : '5vw',
-        fontSize: '3vw',
-        fontFamily: '"Do Hyeon", "sans-serif"'
+        width : '3rem',
+        fontSize: '2rem',
+        fontFamily: 'Comic Sans MS'
     },
     center: {
         display:'flex',
+        alignItems: 'center',
         margin: '10px auto',
     },
   })
@@ -47,21 +47,12 @@ return    (
         <Typography className={clsx(classes.title, classes.white,classes.sideItem, classes.vertical, classes.center)}>
             DICTIONARY
         </Typography>
-        <Typography className={clsx(classes.black, classes.sideItem, classes.vertical, classes.center)}>
-            표지
-        </Typography>
-        <Typography className={clsx(classes.black, classes.sideItem, classes.vertical, classes.center)}>
-            목차
-        </Typography>
-        <Typography className={clsx(classes.black, classes.sideItem, classes.vertical, classes.center)}>
-            부록
-        </Typography>
         <Link>
-            <img className={clsx(classes.sideItem, classes.center)} src="/github_logo.png" />
+            <img className={clsx(classes.sideItem, classes.center)} src="/github_logo_white.png" />
         </Link>
         <a>
             <Typography className={clsx(classes.white, classes.sideItem, classes.vertical, classes.center)}>
-                기여 하기
+                CONTRIBUTE
             </Typography>
         </a>
 
