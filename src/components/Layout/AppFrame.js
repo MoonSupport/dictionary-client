@@ -1,15 +1,30 @@
 import React from "react"
 import { CssBaseline } from '@material-ui/core'
+import SideTitle from "../../components/SideTitle"
 
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core"
+
+const useStyles = makeStyles(() => ({
+  container: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  main : {
+    width: '90vw',
+    height:'100vh',
+    backgroundRepeat: 'repeat',
+}
+}))
 
 const theme = createMuiTheme({
   overrides: {
     MuiCssBaseline: {
       '@global': {
         body: {
-          backgroundImage: "url('/ground-texture.png')",
-          backgroundRepeat: 'repeat',
+          // backgroundColor: '#fff4ea'
         },
       },
     },
@@ -19,21 +34,35 @@ const theme = createMuiTheme({
       },
     },
   },
+  typography: {
+    fontFamily: [
+      'Comic Sans MS'
+    ].join(',')
+  },
   palette: {
     primary: {
-      main: "#000",
+      main: '#CDE8EF'
     },
     secondary: {
-      main: "#8c2416",
+      main: "#FFF",
     },
   },
 })
 
+
 export default function AppFrame({ children }) {
+  const classes = useStyles()
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline/>
-      {children}
+      <div className={classes.container}>
+        <div className={classes.main}>
+        {children}
+        </div>
+        <div>
+        <SideTitle />
+        </div>
+      </div>
     </ThemeProvider>
   )
 }
