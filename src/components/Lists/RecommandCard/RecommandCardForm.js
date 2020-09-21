@@ -5,8 +5,8 @@ import WordPage from "../WordCard"
 export default function RecommandCardForm({ techs, image }) {
   return (
     <WordPage link="/page1" image={image}>
-      {techs.map(tech => (
-        <Grid item xs={12} sm={6}>
+      {techs.map((tech,index) => (
+        <Grid key={index} item xs={12} sm={6}>
           <Box
             underline="none"
             component="a"

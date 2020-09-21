@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { Box } from "@material-ui/core"
 import LabelList from "../components/LabelList"
 import AppFrame from "../components/Layout/AppFrame"
-import SearchBar from "../components/Forms/SearchBar"
+import css from "../../static/css.css"
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -17,11 +17,7 @@ export default function Template({
   const content = html.split("<content>")[1].split("</content")[0]
   return (
     <AppFrame>
-      <div
-        style={{ display: "flex", justifyContent: "center", marginBottom: 50 }}
-      >
-        <SearchBar />
-      </div>
+
       <Box style={{ marginLeft: 15 }}>
         <Box component="h1">{title}</Box>
         <LabelList labels={label} />
@@ -43,7 +39,7 @@ export default function Template({
         <Box component="h2">관련 기술</Box>
         {relation &&
           relation.map((value, index) => (
-            <div style={{ marginBottom: 10 }}>
+            <div key={index} style={{ marginBottom: 10 }}>
               {value.startsWith(`${index + 1}.`)
                 ? value
                 : `${index + 1}. ${value}`}
