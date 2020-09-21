@@ -36,8 +36,8 @@ export default function LabelList({ labels }) {
   return (
     <>
       <Box className={classes.labels}>
-        {labels.map(label => (
-          <Label label={label} />
+        {labels.map((label,index) => (
+          <Label key={index} label={label} />
         ))}
       </Box>
     </>
