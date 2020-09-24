@@ -1,6 +1,6 @@
 import React from "react"
-import { Paper, Typography, Box, makeStyles } from "@material-ui/core"
-
+import { Paper, Typography, makeStyles } from "@material-ui/core"
+import RecommandIndex from '../components/Lists/RecommandIndex'
 const useStyles = makeStyles({
     main: {
         borderBottom:'5px solid #CDE8EF',
@@ -23,27 +23,13 @@ const useStyles = makeStyles({
     }
 })
 
-const IndexList = () => {
-    const classes = useStyles()
-    return (
-        <Box>
-        <Box className={classes.chapterContianer}>
-            <Typography className={classes.chapterTitle1}  variant="h3" color="secondary">FrontEnd</Typography>
-            <Typography className={classes.chapterTitle2} variant="h3" color="primary">프론트 엔드</Typography>
-        </Box>
-        <Box>
-            <Typography>단어</Typography>
-        </Box>
-        </Box>
-        )
-}
 
 const Index = () => {
 const classes = useStyles()
 return    (
     <Paper elevation={0}>
         <Typography  className={classes.main} variant='h2' color='primary'>INDEX</Typography>
-        <IndexList />
+        <RecommandIndex />
     </Paper>
 
 )
