@@ -10,11 +10,10 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "flex-start",
   },
   main : {
     width: '90vw',
-    height:'100vh',
     backgroundRepeat: 'repeat',
 }
 }))
@@ -24,7 +23,7 @@ const theme = createMuiTheme({
     MuiCssBaseline: {
       '@global': {
         body: {
-          // backgroundColor: '#fff4ea'
+          backgroundColor: '#fff'
         },
       },
     },

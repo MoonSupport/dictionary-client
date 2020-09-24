@@ -8,7 +8,7 @@ import clsx from 'clsx'
 const useStyles = makeStyles({
     sideTitle : {
         width: '10vw',
-        height:'100vh',
+        height:'100em',
         backgroundColor: '#CDE8EF',
         display:'flex',
         flexDirection: 'column',
@@ -37,6 +37,9 @@ const useStyles = makeStyles({
         alignItems: 'center',
         margin: '10px auto',
     },
+    empty: {
+        backgroundColor: '#CDE8EF',
+    }
   })
 
 const SideTitle = () => {
@@ -57,6 +60,7 @@ return    (
         </a>
 
     </Box>
+  
 )
 
 }
