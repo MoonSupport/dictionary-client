@@ -15,6 +15,10 @@ const useStyles = makeStyles({
     chapterTitle2: {
         display: 'inline-block',
         padding: '0.5rem 1rem',
+    },
+    listContainer: {
+        fontSize: 26,
+        marginBottom: 10,
     }
 })
 
@@ -29,8 +33,9 @@ export default function RecommandIndexForm({ words, engTitle, korTitle }) {
       <Box>
           {words.map(word=>(
               <Link href={word?.frontmatter?.slug}>
-              <Box>
-                 {word?.frontmatter?.title}
+              <Box className={classes.listContainer}>
+                 {word?.frontmatter?.title + ' '}
+                 [{word?.frontmatter?.label.join(',')}]
               </Box>
               </Link>
           ))}
