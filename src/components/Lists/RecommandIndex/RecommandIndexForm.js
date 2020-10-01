@@ -1,5 +1,5 @@
-import React from "react"
-import { Box, Typography, Link } from "@material-ui/core"
+import React, {useState, useEffect} from "react"
+import { Box, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles({
     chapterContianer: {
@@ -25,8 +25,16 @@ const useStyles = makeStyles({
     }
 })
 
+
+
 export default function RecommandIndexForm({ words, engTitle, korTitle }) {
+    const [datas, setData] = useState([])
     const classes = useStyles()
+
+    useEffect(()=> {
+        setData(words)
+    })
+
     return (
       <Box>
       <Box className={classes.chapterContianer}>
@@ -34,13 +42,12 @@ export default function RecommandIndexForm({ words, engTitle, korTitle }) {
     <Typography className={classes.chapterTitle2} variant="h3" color="primary">{korTitle}</Typography>
       </Box>
       <Box className={classes.listContainer}>
-          {words.map(word=>(
-              <Link href={word?.frontmatter?.slug}>
-              <Box className={classes.words}>
-                 {word?.frontmatter?.title + ' '}
-                 [{word?.frontmatter?.label.join(',')}]
-              </Box>
-              </Link>
+          {datas.map(word=>(
+                <Box component="a" href={word?.frontmatter?.slug} className={classes.words}>
+                    {word?.frontmatter?.title + ' '}
+                    [{word?.frontmatter?.label.join(',')}]
+                    [[{word?.frontmatter?.slug}]]
+                </Box>
           ))}
       </Box>
       </Box>
