@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     sideTitle : {
         width: '10vw',
         height:'100em',
-        backgroundColor: '#CDE8EF',
+        backgroundColor: '#6CA0DC',
         display:'flex',
         flexDirection: 'column',
     },
@@ -38,7 +38,7 @@ const useStyles = makeStyles({
         margin: '10px auto',
     },
     empty: {
-        backgroundColor: '#CDE8EF',
+        backgroundColor: '#6CA0DC',
     }
   })
 

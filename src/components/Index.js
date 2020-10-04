@@ -3,7 +3,7 @@ import { Paper, Typography, makeStyles } from "@material-ui/core"
 import RecommandIndex from '../components/Lists/RecommandIndex'
 const useStyles = makeStyles({
     main: {
-        borderBottom:'5px solid #CDE8EF',
+        borderBottom:'5px solid #6CA0DC',
         display: 'inline-block',
         marginBottom : '100px'
     },
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     chapterTitle1: {
         display: 'inline-block',
         padding: '0.5rem 1rem',
-        backgroundColor: '#CDE8EF'
+        backgroundColor: '#6CA0DC'
     },
 
     chapterTitle2: {
