@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import { Box, Typography } from "@material-ui/core"
+import { Box, Typography, Link } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles({
     chapterContianer: {
@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     chapterTitle1: {
         display: 'inline-block',
         padding: '0.5rem 1rem',
-        backgroundColor: '#CDE8EF'
+        backgroundColor: '#6CA0DC'
     },
 
     chapterTitle2: {
@@ -43,11 +43,12 @@ export default function RecommandIndexForm({ words, engTitle, korTitle }) {
       </Box>
       <Box className={classes.listContainer}>
           {datas.map(word=>(
-                <Box component="a" href={word?.frontmatter?.slug} className={classes.words}>
-                    {word?.frontmatter?.title + ' '}
-                    [{word?.frontmatter?.label.join(',')}]
-                    [[{word?.frontmatter?.slug}]]
-                </Box>
+              <Link href={word?.frontmatter?.slug}>
+            <Box className={classes.words}>
+                {word?.frontmatter?.title + ' '}
+                [{word?.frontmatter?.label.join(',')}]
+            </Box>
+                </Link>
           ))}
       </Box>
       </Box>
