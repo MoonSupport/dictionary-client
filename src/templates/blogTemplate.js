@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { Box } from "@material-ui/core"
 import LabelList from "../components/LabelList"
 import AppFrame from "../components/Layout/AppFrame"
-import css from "../../static/css.css"
+// import css from "../../static/css.css"
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.

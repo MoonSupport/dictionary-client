@@ -50,15 +50,12 @@ return    (
         <Typography className={clsx(classes.title, classes.white,classes.sideItem, classes.vertical, classes.center)}>
             DICTIONARY
         </Typography>
-        <Link>
-            <img className={clsx(classes.sideItem, classes.center)} src="/github_logo_white.png" />
-        </Link>
-        <a>
+        <Link href="">
+            <img alt="github_logo" className={clsx(classes.sideItem, classes.center)} src="/github_logo_white.png" />
             <Typography className={clsx(classes.white, classes.sideItem, classes.vertical, classes.center)}>
                 CONTRIBUTE
             </Typography>
-        </a>
-
+        </Link>
     </Box>
   
 )
