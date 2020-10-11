@@ -24,8 +24,8 @@ export default function RecommandIndexView() {
 
   return (
     <RecommandIndexForm
-    engTitle={'Backend'}
-    korTitle={'백엔드'}
+      engTitle={"Backend"}
+      korTitle={"백엔드"}
       words={sampleSize(backends, 4)}
     />
   )

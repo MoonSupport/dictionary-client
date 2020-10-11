@@ -21,9 +21,10 @@ export default function RecommandIndexView() {
   `)
 
   return (
-    <RecommandIndexForm 
-    engTitle={'Common'}
-    korTitle={'공통 일반'}
-    words={sampleSize(commons, 4)} />
+    <RecommandIndexForm
+      engTitle={"Common"}
+      korTitle={"공통 일반"}
+      words={sampleSize(commons, 4)}
+    />
   )
 }

@@ -10,7 +10,9 @@ export default function RecommandIndexView() {
     allMarkdownRemark: { nodes: databases },
   } = useStaticQuery(graphql`
     query DatabaseRecommandWords {
-      allMarkdownRemark(filter: { frontmatter: { label: { in: "Database" } } }) {
+      allMarkdownRemark(
+        filter: { frontmatter: { label: { in: "Database" } } }
+      ) {
         nodes {
           frontmatter {
             title
@@ -24,8 +26,8 @@ export default function RecommandIndexView() {
 
   return (
     <RecommandIndexForm
-    engTitle={'Database'}
-    korTitle={'데이터베이스'}
+      engTitle={"Database"}
+      korTitle={"데이터베이스"}
       words={sampleSize(databases, 4)}
     />
   )

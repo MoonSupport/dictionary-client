@@ -1,4 +1,3 @@
-
 const fs = require("fs")
 const yaml = require("js-yaml")
 exports.createPages = async ({ actions, graphql, reporter }) => {

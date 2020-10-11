@@ -17,7 +17,6 @@ export default function Template({
   const content = html.split("<content>")[1].split("</content")[0]
   return (
     <AppFrame>
-
       <Box style={{ marginLeft: 15 }}>
         <Box component="h1">{title}</Box>
         <LabelList labels={label} />

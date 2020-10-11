@@ -7,13 +7,13 @@ import RecommandIndexDevops from "./RecommandIndexDevops"
 
 const RecommandIndex = () => {
   return (
-      <>
-        <RecommandIndexCommon />
-        <RecommandIndexFrontend />
-        <RecommandIndexBackend />
-        <RecommandIndexDatabase />
-        <RecommandIndexDevops />
-      </>
+    <>
+      <RecommandIndexCommon />
+      <RecommandIndexFrontend />
+      <RecommandIndexBackend />
+      <RecommandIndexDatabase />
+      <RecommandIndexDevops />
+    </>
   )
 }
 
