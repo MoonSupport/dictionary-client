@@ -1,14 +1,15 @@
 ---
 title: Token
 label: [Backend]
-origin:  token
-pronunciation:  토큰
-mean:  티켓
+origin: token
+pronunciation: 토큰
+mean: 티켓
 relation: []
 slug: /T/Token
 ---
 
 <content>
+
 
 <p>토큰은 <span style='color:#FFCC00; font-weight:bold;'>
 파싱 목적</span>을 위해 분류화를 명시적으로 지시하는 어휘소를 표현하는 구조의 하나이다.</p>
@@ -21,23 +22,48 @@ slug: /T/Token
 <li>literal: 숫자, 논리, 텍스트, 참조 리터럴</li>
 <li>comment: 라인, 블럭, 주석</li>
 </ul>
-<p>토큰 값의 예
-|Token name|Sample token values|
-|------|---|
-|identifier|x, color, UP|
-|keyword| if, while, return
-|separator| }, (, ;
-|operator| +, &lt;, =
-|literal| true, 6.02e23, "music"
-|comment| /_ Retrieves user data _/, // must be negative</p>
+<p>토큰 값의 예</p>
+<table>
+<thead>
+<tr>
+<th id="token_name">Token name</th>
+<th id="sample_token_values">Sample token values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>identifier</td>
+<td>x, color, UP</td>
+</tr>
+<tr>
+<td>keyword</td>
+<td>if, while, return</td>
+</tr>
+<tr>
+<td>separator</td>
+<td>}, (, ;</td>
+</tr>
+<tr>
+<td>operator</td>
+<td>+, &lt;, =</td>
+</tr>
+<tr>
+<td>literal</td>
+<td>true, 6.02e23, "music"</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>/_ Retrieves user data _/, // must be negative</td>
+</tr>
+</tbody>
+</table>
 <p>C프로그래밍에서는 다음과 같다.</p>
-<pre><code>x = a + b * 2;
-</code></pre>
+<pre><code>x = a + b * 2;</code></pre>
 <p>이 표현식의 어휘 분석은 다음 순서의 토큰을 생성합니다.</p>
 <pre><code>[
     (identifier, x), (operator, =), (identifier, a), (operator, +), (identifier, b), (operator, *), (literal, 2), (separator, ;)
-]
-</code></pre>
+]</code></pre>
 <p><a href="https://en.wikipedia.org/wiki/Lexical_analysis#Token">위키 백과</a></p>
+
 
 </content>
