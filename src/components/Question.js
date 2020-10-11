@@ -1,14 +1,16 @@
 import React, {useState, useEffect, useMemo} from "react"
 import { chunk, random} from 'lodash'
-// import { makeStyles } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core"
 import { useStaticQuery } from 'gatsby'
-// const useStyles = makeStyles({
-
-// })
+const useStyles = makeStyles({
+  selected : (e) => {
+    console.log(e)
+    return 'black'
+  }
+})
 
 
 const Question = () => {
-// const classes = useStyles()
 const [chooses, setChooses] = useState([])
 const [page, setPage] = useState(0)
 
@@ -34,7 +36,6 @@ const questionss = chunk(samples, 5)
 
 
 const [questionMap, answers] = useMemo(()=> {
-  console.log('meemo')
   const questionMap = []
   const answers = []
   questionss.map((questions, index)=> {
@@ -79,14 +80,13 @@ const handleOnClick = (e) => {
   }))
 }
 
-
 return    (
     <>
     <div>Qustion</div>
     <div>
       <Problem problem={questionMap[page]} />
-      <Viewer questions={questionss[page]} handleOnClick={handleOnClick} />
-      {chooses[page]}
+      <Viewer chooses={chooses[page]} questions={questionss[page]} handleOnClick={handleOnClick} />
+      <NavigationButton setPage={setPage} />
     </div>
  
     </>
@@ -94,17 +94,44 @@ return    (
 
 }
 
+const NavigationButton = ({setPage}) => {
+  const handlePreviousClick = () => {
+    setPage((page)=>{
+      if(page<=0) {
+        alert('첫 페이지 입니다.')
+        return
+      }
+      return --page
+    })
+  }
+
+  const handleNextClick = () => {
+    setPage((page)=>{
+      if(page>=9) {
+        alert('마지막 페이지입니다.')
+        return
+      }
+      return ++page
+    })
+  }
+  return <>
+    <div onClick={handlePreviousClick}>previous</div>
+    <div onClick={handleNextClick}>next</div>
+  </>
+}
+
 const Problem = ({problem}) => {
   return <div dangerouslySetInnerHTML={{ __html: problem }}/>
 }
 
-const Viewer = ({questions, handleOnClick}) => {
+const Viewer = ({questions, handleOnClick, chooses}) => {
+  const classes = useStyles()
   return (<>
   {questions.map((question, index)=> {
     return (
         <>
-          <div onClick={handleOnClick}>
-              {index}. 
+          <div style={(chooses == index ) ? {color: 'green'} : {color : 'black'}} onClick={handleOnClick} className={classes.selected}>
+              {index}.
               {' '+question.frontmatter.title}
           </div>
         </>
