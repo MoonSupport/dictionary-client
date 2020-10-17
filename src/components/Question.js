@@ -47,6 +47,7 @@ const Question = () => {
       }
       questionMap.push(formattedQuestion);
       answers.push(answer);
+      return
     });
     return [questionMap, answers];
   }, []);
@@ -76,9 +77,15 @@ const Question = () => {
     });
   };
 
+  const handleResult = () => {
+    console.log('chooses', chooses)
+    console.log('answers', answers)
+  }
+
   return (
     <>
       <div>Qustion</div>
+      <div>{page}/9</div>
       <div>
         <Problem problem={questionMap[page]} />
         <Viewer
@@ -87,6 +94,8 @@ const Question = () => {
           handleOnClick={handleOnClick}
         />
         <NavigationButton setPage={setPage} />
+        {page === 9 && <div onClick={handleResult}>결과 확인하기</div>}
+        
       </div>
     </>
   );
