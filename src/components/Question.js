@@ -23,6 +23,7 @@ const Question = () => {
     }
   `);
 
+
   const questionss = chunk(samples, 5);
 
   const [questionMap, answers] = useMemo(() => {
@@ -65,7 +66,7 @@ const Question = () => {
   }
 
   const handleOnClick = (e) => {
-    const answer = e.target?.innerHTML?.split(".")[0];
+    const answer = e.target?.innerHTML?.split(".")[0].replace('<!-- -->', '');
     if (!answer) return;
 
     setChooses((chooses) => {
@@ -95,7 +96,7 @@ const NavigationButton = ({ setPage }) => {
     setPage((page) => {
       if (page <= 0) {
         alert("첫 페이지 입니다.");
-        return;
+        return page;
       }
       return --page;
     });
@@ -105,7 +106,7 @@ const NavigationButton = ({ setPage }) => {
     setPage((page) => {
       if (page >= 9) {
         alert("마지막 페이지입니다.");
-        return;
+        return page;
       }
       return ++page;
     });
