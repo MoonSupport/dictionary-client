@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { chunk, random } from "lodash";
+import { chunk, random, sampleSize} from "lodash";
 import { useStaticQuery } from "gatsby";
 
 const Question = () => {
@@ -7,10 +7,10 @@ const Question = () => {
   const [page, setPage] = useState(0);
 
   const {
-    allMarkdownRemark: { nodes: samples },
+    allMarkdownRemark: { nodes: allSamples },
   } = useStaticQuery(graphql`
     query samples {
-      allMarkdownRemark(filter: { frontmatter: {} }, limit: 50) {
+      allMarkdownRemark(filter: { frontmatter: {} }) {
         nodes {
           frontmatter {
             title
@@ -23,8 +23,9 @@ const Question = () => {
     }
   `);
 
+  const samples = useMemo(()=>sampleSize(allSamples,50),[])
 
-  const questionss = chunk(samples, 5);
+  const questionss = useMemo(()=>chunk(samples, 5),[]);
 
   const [questionMap, answers] = useMemo(() => {
     const questionMap = [];
