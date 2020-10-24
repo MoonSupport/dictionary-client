@@ -5,11 +5,14 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    margin: '0px 80px',
+    height: '100vh'
   },
 })
 
-const Intro = ({children}) => {
+
+const Layout = ({children}) => {
   const classes = useStyles()
   return (
     <Box className={classes.layout}>
@@ -18,4 +21,4 @@ const Intro = ({children}) => {
   )
 }
 
-export default Intro
+export default Layout
