@@ -1,11 +1,6 @@
 import React from "react"
-import AppFrame from "../components/Layout/AppFrame"
-import Index from "../components/Index"
+import Intro from "../components/Intro"
 
 export default function Home() {
-  return (
-    <AppFrame>
-      <Index />
-    </AppFrame>
-  )
+  return <Intro />  
 }
