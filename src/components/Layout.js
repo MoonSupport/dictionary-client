@@ -4,8 +4,9 @@ const useStyles = makeStyles({
   layout: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
+    flexFlow: 'column nowrap',
     margin: '0px 80px',
     height: '100vh'
   },

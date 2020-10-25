@@ -1,11 +1,11 @@
 import React from "react"
-import AppFrame from "../../components/Layout/AppFrame"
+import Layout from "../../components/Layout"
 import Test from "../../components/Test"
 
 export default function TestPage() {
   return (
-    <AppFrame>
+    <Layout>
       <Test />
-    </AppFrame>
+    </Layout>
   )
 }
