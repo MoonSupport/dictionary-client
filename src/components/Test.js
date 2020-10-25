@@ -1,13 +1,9 @@
-import React from "react"
+import React, {useState} from "react"
 import { Paper, Typography, makeStyles } from "@material-ui/core"
 import Question from "./Question"
 import Progress from './Progress'
+import Navigation from './Navigation'
 const useStyles = makeStyles({
-  main: {
-    borderBottom: "5px solid #6CA0DC",
-    display: "inline-block",
-    marginBottom: "100px",
-  },
   chapterContianer: {
     display: "flex",
     marginBottom: "50px",
@@ -26,14 +22,24 @@ const useStyles = makeStyles({
 
 const Test = () => {
   const classes = useStyles()
+  const [activeStep, setActiveStep] = useState(0);
+
+  //   const handleNext = () => {
+//     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+//   };
+
+//   const handleBack = () => {
+//     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+//   };
+
   return (
     <Paper elevation={0}>
-      <Progress/>
       <Typography className={classes.main} variant="h2" color="primary">
-        Test
+    {activeStep}/9
       </Typography>
-
+      <Progress activeStep={activeStep}/>
       <Question />
+      <Navigation activeStep={activeStep} setActiveStep={setActiveStep} />
     </Paper>
   )
 }

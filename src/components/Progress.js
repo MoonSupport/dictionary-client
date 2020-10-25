@@ -32,18 +32,9 @@ const theme = createMuiTheme({
 
 
 
-export default function ProgressMobileStepper() {
+export default function ProgressMobileStepper({activeStep}) {
   const classes = useStyles();
 //   const theme = useTheme();
-//   const [activeStep, setActiveStep] = React.useState(0);
-
-//   const handleNext = () => {
-//     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-//   };
-
-//   const handleBack = () => {
-//     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-//   };
 
   return (
     <ThemeProvider theme={theme}>
@@ -51,20 +42,8 @@ export default function ProgressMobileStepper() {
             variant="progress"
             steps={10}
             position="static"
-        //   activeStep={activeStep}
+            activeStep={activeStep}
             className={classes.root}
-        //   nextButton={
-        //     <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
-        //       Next
-        //       {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-        //     </Button>
-        //   }
-        //   backButton={
-        //     <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-        //       {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-        //       Back
-        //     </Button>
-        //   }
         />
     </ThemeProvider>
   );

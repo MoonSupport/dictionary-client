@@ -78,8 +78,6 @@ const Question = () => {
   };
 
   const handleResult = () => {
-    console.log('chooses', chooses)
-    console.log('answers', answers)
   }
 
   return (
