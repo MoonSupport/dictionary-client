@@ -3,16 +3,20 @@ import { makeStyles, ThemeProvider, createMuiTheme,
     // useTheme 
 } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
+import { Box } from '@material-ui/core';
 // import Button from '@material-ui/core/Button';
 // import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 // import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 const useStyles = makeStyles({
   root: {
-    marginTop: 80,
     maxWidth: '100%',
     flexGrow: 1,
   },
+  processNumber: {
+    textAlign:'right',
+    paddingRight: 16
+  }
 });
 
 const theme = createMuiTheme({
@@ -23,7 +27,8 @@ const theme = createMuiTheme({
             },
             progress: {
                 width: '100%',
-                height: 6
+                height: 10,
+                borderRadius: '10px'
             }
         }
         // .MuiMobileStepper-root
@@ -38,6 +43,9 @@ export default function ProgressMobileStepper({activeStep}) {
 
   return (
     <ThemeProvider theme={theme}>
+      <Box className={classes.processNumber}>
+      {activeStep}/9
+      </Box>
         <MobileStepper
             variant="progress"
             steps={10}
