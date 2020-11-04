@@ -2,7 +2,8 @@ import React from "react";
 
 import { Box } from "@material-ui/core";
 
-const Question = ({activeStep, chooses ,setChooses, questionMap, questionss}) => {
+const Question = ({ activeStep, chooses, setChooses, questionMap, questionss }) => {
+
   const handleOnClick = (e) => {
     const answerNumber = e.target?.innerHTML?.split(".")[0].replace('<!-- -->', '');
     const answerTitle = e.target?.innerHTML?.split(".")[1]
@@ -15,7 +16,6 @@ const Question = ({activeStep, chooses ,setChooses, questionMap, questionss}) =>
       return [...chooses];
     });
   };
-
   return (
     <>
       <div>Qustion</div>
@@ -25,7 +25,7 @@ const Question = ({activeStep, chooses ,setChooses, questionMap, questionss}) =>
           choose={chooses[activeStep] && chooses[activeStep].number}
           questions={questionss[activeStep]}
           handleOnClick={handleOnClick}
-        />        
+        />
       </div>
     </>
   );
@@ -40,23 +40,23 @@ const Viewer = ({ questions, handleOnClick, choose }) => {
     <Box>
       {questions.map((question, index) => {
         return (
-            <div
-              key={index}
-              style={{
-                border: choose == index ? '2px solid #3f51b5' : '2px solid #282828',
-                borderRadius:'4px',
-                cursor: 'pointer',
-                color : choose == index ? '#3f51b5' : '#282828',
-                width: '100%',
-                height: 30,
-                lineHeight:2,
-                paddingLeft: 10,
-                marginBottom: 10
-              }}
-              onClick={handleOnClick}
-            >
-              {index}.{" " + question.frontmatter.title}
-            </div>
+          <div
+            key={index}
+            style={{
+              border: choose == index ? '2px solid #3f51b5' : '2px solid #282828',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              color: choose == index ? '#3f51b5' : '#282828',
+              width: '100%',
+              height: 30,
+              lineHeight: 2,
+              paddingLeft: 10,
+              marginBottom: 10
+            }}
+            onClick={handleOnClick}
+          >
+            {index}.{" " + question.frontmatter.title}
+          </div>
         );
       })}
     </Box>

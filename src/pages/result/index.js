@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useLocation } from '@reach/router';
 import Helmet from "react-helmet"
 import { fetch } from 'whatwg-fetch'
@@ -6,16 +6,19 @@ import { Box, Typography } from '@material-ui/core'
 import queryString from 'query-string';
 import Contributor from '../../components/Contributor'
 import Rank from '../../components/Rank';
+import { floor } from 'lodash'
 
 
 
 const Result = () => {
-    const [users, setUsers] = useState([])
+    const [users, setUsers] = useState(0)
+    const [correctNumber, setCorrectNumber] = useState()
     const location = useLocation()
 
     const wrongs = getWrongs(location);
     const userPromise = getUser()
-    useMemo(() => {
+    useEffect(() => {
+        setCorrectNumber((10 - wrongs.length))
         userPromise.then(parseJSON).then(function (data) {
             const tempUsers = []
             data.map((user) => {
@@ -31,7 +34,6 @@ const Result = () => {
     }, [])
 
 
-    const correctNumber = (10 - wrongs.length);
     return (
         <>
             <Helmet>
@@ -51,7 +53,7 @@ const Result = () => {
             <Box style={{ padding: '15px', border: '2px solid #333 ', borderRadius: '5px' }}>
                 <Typography style={{ fontWeight: 'bold' }} variant="h3">결과표</Typography>
                 <Box style={{ display: 'flex' }}>
-                    <Rank correct={correctNumber / 2} />
+                    <Rank correct={floor(correctNumber / 2)} />
                     <Box style={{ display: 'flex', marginLeft: 30, alignItems: 'center' }}>
                         <Typography variant="h4">{correctNumber * 10} 점</Typography>
                     </Box>

@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Link } from "gatsby"
+import React, { useState, useEffect } from 'react';
 
 import { Button, Typography } from '@material-ui/core';
 
