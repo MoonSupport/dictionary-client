@@ -20,26 +20,19 @@ const useStyles = makeStyles({
   },
 })
 
-const Test = () => {
+const Test = ({questionMap, questionss, answers}) => {
   const classes = useStyles()
   const [activeStep, setActiveStep] = useState(0);
-
-  //   const handleNext = () => {
-//     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-//   };
-
-//   const handleBack = () => {
-//     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-//   };
+  const [chooses, setChooses] = useState([]);
 
   return (
-    <Paper elevation={0}>
+    <Paper style={{width:'100%'}}elevation={0}>
       <Typography className={classes.main} variant="h2" color="primary">
-    {activeStep}/9
+        hello?
       </Typography>
       <Progress activeStep={activeStep}/>
-      <Question />
-      <Navigation activeStep={activeStep} setActiveStep={setActiveStep} />
+      <Question questionMap={questionMap} questionss={questionss} activeStep={activeStep} chooses={chooses} setChooses={setChooses} />
+      <Navigation activeStep={activeStep} setActiveStep={setActiveStep} chooses={chooses} answers={answers} questionMap={questionMap} questionss={questionss} />
     </Paper>
   )
 }
