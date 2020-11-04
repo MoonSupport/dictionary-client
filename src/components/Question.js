@@ -2,9 +2,8 @@ import React, { useState, useMemo } from "react";
 import { chunk, random, sampleSize} from "lodash";
 import { useStaticQuery } from "gatsby";
 
-const Question = () => {
+const Question = ({activeStep}) => {
   const [chooses, setChooses] = useState([]);
-  const [page, setPage] = useState(0);
 
   const {
     allMarkdownRemark: { nodes: allSamples },
@@ -72,57 +71,24 @@ const Question = () => {
     if (!answer) return;
 
     setChooses((chooses) => {
-      chooses[page] = answer;
+      chooses[activeStep] = answer;
       return [...chooses];
     });
   };
 
-  const handleResult = () => {
-  }
-
   return (
     <>
       <div>Qustion</div>
-      <div>{page}/9</div>
       <div>
-        <Problem problem={questionMap[page]} />
+        <Problem problem={questionMap[activeStep]} />
         <Viewer
-          chooses={chooses[page]}
-          questions={questionss[page]}
+          chooses={chooses[activeStep]}
+          questions={questionss[activeStep]}
           handleOnClick={handleOnClick}
         />
-        <NavigationButton setPage={setPage} />
-        {page === 9 && <div onClick={handleResult}>결과 확인하기</div>}
+        {activeStep === 9 && <div> 결과 확인하기</div>}
         
       </div>
-    </>
-  );
-};
-
-const NavigationButton = ({ setPage }) => {
-  const handlePreviousClick = () => {
-    setPage((page) => {
-      if (page <= 0) {
-        alert("첫 페이지 입니다.");
-        return page;
-      }
-      return --page;
-    });
-  };
-
-  const handleNextClick = () => {
-    setPage((page) => {
-      if (page >= 9) {
-        alert("마지막 페이지입니다.");
-        return page;
-      }
-      return ++page;
-    });
-  };
-  return (
-    <>
-      <div onClick={handlePreviousClick}>previous</div>
-      <div onClick={handleNextClick}>next</div>
     </>
   );
 };
