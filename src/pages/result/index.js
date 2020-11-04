@@ -1,19 +1,22 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import {Octokit} from '@octokit/core'
-import Contributor from '../../components/Contributor'
-import { Box } from '@material-ui/core'
+import React, {  useMemo, useState } from 'react'
+import { useLocation } from '@reach/router';
 import Helmet from "react-helmet"
+import {fetch} from 'whatwg-fetch'
+import { Box } from '@material-ui/core'
+import queryString from 'query-string';
+import Contributor from '../../components/Contributor'
+
+
 
 const Result = () => {
     const  [users, setUsers]  = useState([])
+    const location = useLocation()
 
-    const param = window.location.search.replace('?wrong=','')
-    const decodeWrongs = decodeURIComponent(param)
-    const wrongs = JSON.parse(decodeWrongs)
+    const wrongs = getWrongs(location);
     const userPromise  = getUser()
-    
     useMemo(()=> {
-        userPromise.then(({data})=>{
+        userPromise.then(parseJSON).then(function (data){
+            console.log('data', data)
             const tempUsers = []
             data.map((user)=> {
                 tempUsers.push({
@@ -54,12 +57,26 @@ const Result = () => {
     )
 }
 
+function getWrongs(location) {
+    const param = queryString.parse(location.search);
+
+    if(!param) return []
+
+    const { wrong } = param;
+
+    if(!wrong) return []
+    const decodeWrongs = decodeURIComponent(wrong);
+    const wrongs = JSON.parse(decodeWrongs);
+    return wrongs;
+}
+
+function parseJSON(response) {
+    return response.json()
+  }
+  
+
 async function getUser() {
-    const octokit = new Octokit({ auth: `142b0da8b1480e84c58ed148d559c8918ef31276` });
-    return await octokit.request('GET /repos/{owner}/{repo}/contributors', {
-        owner: 'MoonSupport',
-        repo: 'dictionary-client'
-    })
+    return fetch('https://api.github.com/repos/MoonSupport/dictionary-client/contributors')
 } 
 
 function sendLink() {
@@ -70,8 +87,6 @@ function sendLink() {
         window.Kakao.init('6b28d3fe635cd8540e6b76f7ec8833fb')
     }
 
-        console.log('window.Kakao')
-        console.log('window.Kakao', window.Kakao)
         window.Kakao.Link.sendDefault({
             objectType: 'feed',
             content: {

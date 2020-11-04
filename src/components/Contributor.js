@@ -1,7 +1,6 @@
 import { Box, Typography } from '@material-ui/core'
 import React from 'react'
 const Contributor = ({users}) => {
-    console.log(users.length)
     return (
         <>
         <Box style={{display:'flex'}}>
@@ -12,8 +11,7 @@ const Contributor = ({users}) => {
             <table style={{border: '1px solid #444444', 'borderCollapse': 'collapse'}}>
             <tr>
                 {users.map(user=>(
-                    <>
-                <td style={{border:' 1px solid #444444'}} align="center">
+                <td key={user.name} style={{border:' 1px solid #444444'}} align="center">
                     <a href={user.url}>
                         <img src={user.avatar} width="100px;" alt=""/>
                         <br />
@@ -27,8 +25,6 @@ const Contributor = ({users}) => {
                 <a href="https://github.com/all-contributors/all-contributors/pulls?q=is%3Apr+reviewed-by%3Akentcdodds" title="Reviewed Pull Requests">👀</a> 
                 <a href="#talk-kentcdodds" title="Talks">📢</a>
                 </td>
-
-                </>
                 ))}
             </tr>
         </table>
