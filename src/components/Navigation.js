@@ -1,31 +1,44 @@
-import React from 'react';
-import { makeStyles, 
-    // useTheme 
-} from '@material-ui/core/styles';
-import { Button } from '@material-ui/core';
-const useStyles = makeStyles({
-  root: {
-    marginTop: 80,
-    maxWidth: '100%',
-    flexGrow: 1,
-  },
-});
+import React, { useState } from 'react';
+import { Link } from "gatsby"
 
-export default function Navigation({activeStep, setActiveStep}) {
-  const classes = useStyles();
+import { Button, Typography } from '@material-ui/core';
+
+export default function Navigation({activeStep, setActiveStep, chooses, answers, questionMap}) {
+  const [isEmptyAnswer, setIsEmptyAnswer] = useState(false)
   const handlePreviousClick = () => {
+    setIsEmptyAnswer(false)
     setActiveStep((activeStep)=>{
         setActiveStep(--activeStep)
     })
     }
     const handleNextClick = () => {
-        console.log('lcikc')
-        setActiveStep((activeStep)=>{
-            setActiveStep(++activeStep)
-        })
+      if(!chooses[activeStep]) {
+        setIsEmptyAnswer(true)
+        return
+      }
+      setIsEmptyAnswer(false)
+      setActiveStep((activeStep)=>{
+          setActiveStep(++activeStep)
+      })
     }
+
+    const handleSubmit = () => {
+      const wrong = []
+      for(let i =0; i<chooses.length; i++) {
+        if(answers[i] !== chooses[i]) {
+          wrong.push({
+            question : questionMap[i].title,
+            choose : chooses[i].title,
+          })
+        }
+         
+      }
+      window.location.href = `/result?wrong=${encodeURIComponent(JSON.stringify(wrong))}`
+    }
+
   return (
       <>
+      {isEmptyAnswer && <Typography color="secondary">정답을 선택해주세요!</Typography>}
         <Button
         onClick={handlePreviousClick}
         disabled={activeStep === 0}
@@ -33,7 +46,7 @@ export default function Navigation({activeStep, setActiveStep}) {
         이전 문제
         </Button>
         {activeStep === 9 ? (
-        <Button>
+        <Button onClick={handleSubmit}>
             제출
             </Button>
             ):(
