@@ -1,17 +1,36 @@
 import { Box, Typography } from '@material-ui/core'
 import React from 'react'
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
+}));
+
 const Contributor = ({ users }) => {
+    const classes = useStyles();
+
     return (
         <>
-            <Box style={{ display: 'flex' }}>
-                <img width="80px" src="/tropy.png" />
-                <Typography variant="h2" style={{ fontWeight: 'bold' }}>프로젝트에 기여한 분들</Typography>
+            <Box style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
+                <img width="80vw" height="80vw" src="/tropy.png" />
+                <Box style={{ display: 'flex', flexDirection: 'column' }}>
+                    <Typography variant="h4" style={{ fontWeight: 'bold' }}>Project Contributor</Typography>
+                </Box>
             </Box>
+
             {users.length > 0 && (
-                <table style={{ border: '1px solid #444444', 'borderCollapse': 'collapse' }}>
-                    <tr>
-                        {users.map(user => (
-                            <td key={user.name} style={{ border: ' 1px solid #444444' }} align="center">
+                <Grid container spacing={3}>
+                    {users.map((user, index) => (
+                        <Grid item xs={4} sm={3} md={2} lg={1}>
+                            <div key={user.name} style={{ border: ' 1px solid #444444' }} align="center">
                                 <a href={user.url}>
                                     <img src={user.avatar} width="100px;" alt="" />
                                     <br />
@@ -20,15 +39,17 @@ const Contributor = ({ users }) => {
                                     </sub>
                                 </a>
                                 <br />
-                                <a href="#question-kentcdodds" title="Answering Questions">💬</a>
-                                <a href="https://github.com/all-contributors/all-contributors/commits?author=kentcdodds" title="Documentation">📖</a>
-                                <a href="https://github.com/all-contributors/all-contributors/pulls?q=is%3Apr+reviewed-by%3Akentcdodds" title="Reviewed Pull Requests">👀</a>
-                                <a href="#talk-kentcdodds" title="Talks">📢</a>
-                            </td>
-                        ))}
-                    </tr>
-                </table>
-            )}
+                                {index < 5 && <span>🏅</span>}
+                                {user.contributions > 100 && <span>⚜️</span>}
+                                {user.contributions > 10 && <span>✨</span>}
+                                {user.contributions > 1 && <span>🔰</span>}
+                            </div>
+                        </Grid>
+                    ))}
+
+                </Grid>
+            )
+            }
         </>
     )
 }

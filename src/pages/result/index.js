@@ -17,13 +17,13 @@ const Result = () => {
     const userPromise = getUser()
     useMemo(() => {
         userPromise.then(parseJSON).then(function (data) {
-            console.log('data', data)
             const tempUsers = []
             data.map((user) => {
                 tempUsers.push({
                     name: user.login,
                     url: user.html_url,
                     avatar: user.avatar_url,
+                    contributions: user.contributions
                 })
             })
             setUsers(tempUsers)
@@ -31,39 +31,40 @@ const Result = () => {
     }, [])
 
 
+    const correctNumber = (10 - wrongs.length);
     return (
         <>
             <Helmet>
                 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
             </Helmet>
-            <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <div id="create-kakao-link-btn" onClick={sendLink}>
-                    <img
+            <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+                <div style={{ display: 'flex', alignItems: 'center' }} id="create-kakao-link-btn" onClick={sendLink}>
+                    <img width="50vw"
                         src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
                     />
-            카톡 공유하기
-            </div>
+                    <p style={{ fontSize: '20px', marginLeft: '10px' }}>
+                        카톡 공유하기
+                    </p>
+                </div>
 
             </Box>
-            <Box>
-                <Box>
-                    <Typography>결과표</Typography>
+            <Box style={{ padding: '15px', border: '2px solid #333 ', borderRadius: '5px' }}>
+                <Typography style={{ fontWeight: 'bold' }} variant="h3">결과표</Typography>
+                <Box style={{ display: 'flex' }}>
+                    <Rank correct={correctNumber / 2} />
+                    <Box style={{ display: 'flex', marginLeft: 30, alignItems: 'center' }}>
+                        <Typography variant="h4">{correctNumber * 10} 점</Typography>
+                    </Box>
+                </Box>
+                <Box style={{ marginTop: 10, display: 'flex', justifyContent: 'flex-end' }}>
+                    <Typography> 정답수 {correctNumber}/10개</Typography>
                 </Box>
                 <Box>
-                    <Rank correct={(10 - wrongs.length) / 2} />
-
-                    <Typography>{(10 - wrongs.length) * 100}</Typography>
-                    <Typography>점</Typography>
-                </Box>
-                <Box>
-                    <Typography> 정답수 {(10 - wrongs.length)}/10개</Typography>
-                </Box>
-                <Box>
-                    <Typography>틀린 문제</Typography>
+                    <Typography variant="h4">틀린 문제</Typography>
                     <Box>
                         {wrongs.map((wrong, index) => (
                             <div key={index}>
-                                {wrong.question}
+                                <a target="_blank" href={`https://github.com/MoonSupport/DICTIONARY/blob/master/DIC/${wrong.question.charAt(0)}/${wrong.question}.md`}>{wrong.question}</a>
                             </div>
                         ))}
                     </Box>
@@ -93,11 +94,13 @@ function parseJSON(response) {
 
 
 async function getUser() {
-    return fetch('https://api.github.com/repos/MoonSupport/dictionary-client/contributors')
+    return fetch('https://api.github.com/repos/mochajs/mocha/contributors')
 }
 
 function sendLink() {
+
     if (!window.Kakao) {
+        alert('오류가 발생했습니다. 새로 고침 후 다시 시도해주세요!')
         return
     }
     if (!window.Kakao.isInitialized()) {
@@ -108,27 +111,27 @@ function sendLink() {
         objectType: 'feed',
         content: {
             title: 'DICTIONARY',
-            description: '#D #I #C #T #I #O',
+            description: '개발자들의 영어단어장',
             imageUrl:
-                'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+                'https://avatars2.githubusercontent.com/u/68211377?s=400&u=1dcbf97c7e693cc8c95634c7ee89b2565883fc7c&v=4',
             link: {
-                mobileWebUrl: 'https://developers.kakao.com',
-                webUrl: 'https://developers.kakao.com',
+                mobileWebUrl: 'https://www.dictionarymoon.tk/',
+                webUrl: 'https://www.dictionarymoon.tk/',
             },
         },
         buttons: [
             {
-                title: '웹으로 보기',
+                title: '테스트하기',
                 link: {
-                    mobileWebUrl: 'https://developers.kakao.com',
-                    webUrl: 'https://developers.kakao.com',
+                    mobileWebUrl: 'https://www.dictionarymoon.tk/',
+                    webUrl: 'https://www.dictionarymoon.tk/',
                 },
             },
             {
-                title: '앱으로 보기',
+                title: 'GITHUB',
                 link: {
-                    mobileWebUrl: 'https://developers.kakao.com',
-                    webUrl: 'https://developers.kakao.com',
+                    mobileWebUrl: 'https://github.com/MoonSupport/DICTIONARY',
+                    webUrl: 'https://github.com/MoonSupport/DICTIONARY',
                 },
             },
         ],

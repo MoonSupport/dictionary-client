@@ -17,7 +17,6 @@ const DarkStar = ({ number }) => {
 }
 
 const Rank = ({ correct }) => {
-    console.log('correct', correct)
     return (
         <>
             <Star number={correct} />
