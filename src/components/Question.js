@@ -1,77 +1,17 @@
-import React, { useState, useMemo } from "react";
-import { chunk, random, sampleSize} from "lodash";
-import { useStaticQuery } from "gatsby";
+import React from "react";
 
-const Question = ({activeStep}) => {
-  const [chooses, setChooses] = useState([]);
+import { Box } from "@material-ui/core";
 
-  const {
-    allMarkdownRemark: { nodes: allSamples },
-  } = useStaticQuery(graphql`
-    query samples {
-      allMarkdownRemark(filter: { frontmatter: {} }) {
-        nodes {
-          frontmatter {
-            title
-            label
-            slug
-          }
-          html
-        }
-      }
-    }
-  `);
-
-  const samples = useMemo(()=>sampleSize(allSamples,50),[])
-
-  const questionss = useMemo(()=>chunk(samples, 5),[]);
-
-  const [questionMap, answers] = useMemo(() => {
-    const questionMap = [];
-    const answers = [];
-    questionss.map((questions) => {
-      const answer = random(0, 4);
-      const question = questions[answer].html;
-      const [front, back] = trimWordFromBraket(
-        questions[answer].frontmatter.title
-      );
-
-      const frontRegex = new RegExp(front, "gi");
-      let formattedQuestion = question
-        .replace(frontRegex, "[ㅁㅁㅁ]")
-        .replace(questions[answer].frontmatter.mean, "[ㅁㅁㅁ]");
-      if (back) {
-        const backRegex = new RegExp(back, "gi");
-        formattedQuestion.replace(backRegex, "[ㅁㅁㅁ]");
-      }
-      questionMap.push(formattedQuestion);
-      answers.push(answer);
-      return
-    });
-    return [questionMap, answers];
-  }, []);
-
-  function trimWordFromBraket(title) {
-    if (!title) {
-      return;
-    }
-    let front = title;
-    let back = "";
-    if (typeof title === "string") {
-      if (title.includes("(")) {
-        front = title.split("(")[0];
-        back = title.split("(")[1].replace(")", "");
-      }
-    }
-    return [front, back];
-  }
-
+const Question = ({activeStep, chooses ,setChooses, questionMap, questionss}) => {
   const handleOnClick = (e) => {
-    const answer = e.target?.innerHTML?.split(".")[0].replace('<!-- -->', '');
-    if (!answer) return;
-
+    const answerNumber = e.target?.innerHTML?.split(".")[0].replace('<!-- -->', '');
+    const answerTitle = e.target?.innerHTML?.split(".")[1]
+    if (!answerNumber || isNaN(answerNumber)) return;
     setChooses((chooses) => {
-      chooses[activeStep] = answer;
+      chooses[activeStep] = {
+        number: Number.parseInt(answerNumber, 10),
+        title: answerTitle
+      }
       return [...chooses];
     });
   };
@@ -80,39 +20,46 @@ const Question = ({activeStep}) => {
     <>
       <div>Qustion</div>
       <div>
-        <Problem problem={questionMap[activeStep]} />
+        <Problem problem={questionMap[activeStep].question} />
         <Viewer
-          chooses={chooses[activeStep]}
+          choose={chooses[activeStep] && chooses[activeStep].number}
           questions={questionss[activeStep]}
           handleOnClick={handleOnClick}
-        />
-        {activeStep === 9 && <div> 결과 확인하기</div>}
-        
+        />        
       </div>
     </>
   );
 };
 
-const Problem = ({ problem }) => {
+export const Problem = ({ problem }) => {
   return <div dangerouslySetInnerHTML={{ __html: problem }} />;
 };
 
-const Viewer = ({ questions, handleOnClick, chooses }) => {
+const Viewer = ({ questions, handleOnClick, choose }) => {
   return (
-    <>
+    <Box>
       {questions.map((question, index) => {
         return (
-          <>
             <div
-              style={chooses == index ? { color: "green" } : { color: "black" }}
+              key={index}
+              style={{
+                border: choose == index ? '2px solid #3f51b5' : '2px solid #282828',
+                borderRadius:'4px',
+                cursor: 'pointer',
+                color : choose == index ? '#3f51b5' : '#282828',
+                width: '100%',
+                height: 30,
+                lineHeight:2,
+                paddingLeft: 10,
+                marginBottom: 10
+              }}
               onClick={handleOnClick}
             >
               {index}.{" " + question.frontmatter.title}
             </div>
-          </>
         );
       })}
-    </>
+    </Box>
   );
 };
 
