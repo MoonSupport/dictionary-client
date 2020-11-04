@@ -52,8 +52,8 @@ export default function RecommandIndexForm({ words, engTitle, korTitle }) {
         </Typography>
       </Box>
       <Box className={classes.listContainer}>
-        {datas.map(word => (
-          <Link href={word?.frontmatter?.slug}>
+        {datas.map((word,index) => (
+          <Link key={index} href={word?.frontmatter?.slug}>
             <Box className={classes.words}>
               {word?.frontmatter?.title + " "}[
               {word?.frontmatter?.label.join(",")}]
