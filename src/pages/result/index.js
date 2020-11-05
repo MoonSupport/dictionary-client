@@ -53,7 +53,9 @@ const Result = () => {
             <Box style={{ padding: '15px', border: '2px solid #333 ', borderRadius: '5px' }}>
                 <Typography style={{ fontWeight: 'bold' }} variant="h3">결과표</Typography>
                 <Box style={{ display: 'flex' }}>
-                    <Rank correct={floor(correctNumber / 2)} />
+                    <Box>
+                        <Rank correct={floor(correctNumber / 2)} />
+                    </Box>
                     <Box style={{ display: 'flex', marginLeft: 30, alignItems: 'center' }}>
                         <Typography variant="h4">{correctNumber * 10} 점</Typography>
                     </Box>
@@ -96,7 +98,7 @@ function parseJSON(response) {
 
 
 async function getUser() {
-    return fetch('https://api.github.com/repos/mochajs/mocha/contributors')
+    return fetch('https://api.github.com/repos/mochajs/mocha-examples/contributors')
 }
 
 function sendLink() {

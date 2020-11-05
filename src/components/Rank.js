@@ -4,7 +4,7 @@ const Star = ({ number }) => {
     const tempArr = new Array(number).fill('')
 
     return <>
-        {tempArr.map((_, index) => <img key={index} width="50px" src="/star.svg" />)}
+        {tempArr.map((_, index) => <img key={index} width="40vw" src="/star.svg" />)}
     </>
 }
 
@@ -12,7 +12,7 @@ const DarkStar = ({ number }) => {
     const tempArr = new Array(number).fill('')
 
     return <>
-        {tempArr.map((_, index) => <img key={index} width="50px" src="/b_star.svg" />)}
+        {tempArr.map((_, index) => <img key={index} width="40vw" src="/b_star.svg" />)}
     </>
 }
 
