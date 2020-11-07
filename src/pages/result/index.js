@@ -68,7 +68,7 @@ const Result = () => {
                     <Box>
                         {wrongs.map((wrong, index) => (
                             <div key={index}>
-                                <a target="_blank" href={`https://github.com/MoonSupport/DICTIONARY/blob/master/DIC/${wrong.question.charAt(0)}/${wrong.question}.md`}>{wrong.question}</a>
+                                <a target="_blank" href={`https://github.com/meotitda/DICTIONARY/blob/master/DIC/${wrong.question.charAt(0)}/${wrong.question}.md`}>{wrong.question}</a>
                             </div>
                         ))}
                     </Box>
@@ -98,7 +98,7 @@ function parseJSON(response) {
 
 
 async function getUser() {
-    return fetch('https://api.github.com/repos/mochajs/mocha-examples/contributors')
+    return fetch('https://api.github.com/repos/meotitda/DICTIONARY/contributors')
 }
 
 function sendLink() {
@@ -134,8 +134,8 @@ function sendLink() {
             {
                 title: 'GITHUB',
                 link: {
-                    mobileWebUrl: 'https://github.com/MoonSupport/DICTIONARY',
-                    webUrl: 'https://github.com/MoonSupport/DICTIONARY',
+                    mobileWebUrl: 'https://github.com/meotitda/DICTIONARY',
+                    webUrl: 'https://github.com/meotitda/DICTIONARY',
                 },
             },
         ],
