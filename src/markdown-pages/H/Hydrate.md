@@ -8,7 +8,7 @@ slug: /H/Hydrate
 
 Erick Robertson( 마이크로소프트 IT Manager )에 댓글에 의하면
 
-> [deserialization](https://github.com/MoonSupport/DICTIONARY/blob/master/S/Serialize.md) == instantiation + Hydrate
+> [deserialization](https://github.com/meotitda/DICTIONARY/blob/master/S/Serialize.md) == instantiation + Hydrate
 
 만약 치명적인 퍼포먼스에 걱정할 필요가 없고, 내부에 있는 데이터 액세스 API디버깅 퍼포먼스 최적화같은것을 하지 않는다면 아마 hydration를 다룰 필요는 없을 겁니다.
 

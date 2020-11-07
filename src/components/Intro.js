@@ -31,14 +31,14 @@ const useStyles = makeStyles({
   },
   footer: {
     marginTop: 'auto',
-    marginBottom : 50
+    marginBottom: 50
   }
 })
 
 
 const buttonCommonStyle = {
-    width: 335,
-    height: 60,
+  width: 335,
+  height: 60,
 }
 
 
@@ -52,19 +52,19 @@ const Intro = () => {
       <Box className={classes.buttonWrapper}>
         <Link href="/test" >
           <Button className={classes.button} style={buttonCommonStyle} variant="contained" color="secondary">
-        시험 시작
+            시험 시작
         </Button>
         </Link>
-        <Button className={classes.button} component="a" href="https://github.com/MoonSupport/DICTIONARY" style={buttonCommonStyle} variant="contained" color="secondary">
-        단어 목록
+        <Button className={classes.button} component="a" href="https://github.com/meotitda/DICTIONARY" style={buttonCommonStyle} variant="contained" color="secondary">
+          단어 목록
         </Button>
-        <Button className={classes.button} component="a" href="https://github.com/MoonSupport/DICTIONARY/blob/master/docs/CONTRIBUTE.md" style={buttonCommonStyle} variant="contained" color="secondary">
-        기여 하기
+        <Button className={classes.button} component="a" href="https://github.com/meotitda/DICTIONARY/blob/master/docs/CONTRIBUTE.md" style={buttonCommonStyle} variant="contained" color="secondary">
+          기여 하기
         </Button>
-        </Box>
-          <a className={classes.footer} href="https://github.com/meotitda">
-          <img src="/footerLogo.png" />
-          </a>
+      </Box>
+      <a className={classes.footer} href="https://github.com/meotitda">
+        <img src="/footerLogo.png" />
+      </a>
     </Layout>
   )
 }
