@@ -98,7 +98,7 @@ function parseJSON(response) {
 
 
 async function getUser() {
-    return fetch('https://api.github.com/repos/mochajs/mocha-examples/contributors')
+    return fetch('https://api.github.com/repos/meotitda/DICTIONARY/contributors')
 }
 
 function sendLink() {
