@@ -11,41 +11,29 @@ export default function Template({
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const {
     html,
-    frontmatter: { title, label, mean, origin, pronunciation, relation },
+    frontmatter: { title, label, hashTag },
   } = markdownRemark
 
-  const content = html.split("<content>")[1].split("</content")[0]
+  const content = html
   return (
     <AppFrame>
       <Box style={{ marginLeft: 15 }}>
         <Box component="h1">{title}</Box>
         <LabelList labels={label} />
-
-        <Box component="h2">의미</Box>
-        <Box>{mean}</Box>
-
-        <Box component="h2">원형</Box>
-        <Box>{origin}</Box>
-
-        <Box component="h2">발음</Box>
-        <Box>{pronunciation}</Box>
-
+        <br />
+        {hashTag &&
+          hashTag.map((value) => (
+            <a href="#">
+              #{value}<span> </span>
+            </a>
+          ))}
         <Box component="h2">설명</Box>
         <div
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: content }}
         />
-        <Box component="h2">관련 기술</Box>
-        {relation &&
-          relation.map((value, index) => (
-            <div key={index} style={{ marginBottom: 10 }}>
-              {value.startsWith(`${index + 1}.`)
-                ? value
-                : `${index + 1}. ${value}`}
-            </div>
-          ))}
       </Box>
-    </AppFrame>
+    </AppFrame >
   )
 }
 
@@ -56,10 +44,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         label
-        mean
-        origin
-        pronunciation
-        relation
+        hashTag
         slug
       }
     }
