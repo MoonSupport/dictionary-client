@@ -1,19 +1,7 @@
 ---
 title: Pluralize
 label: [Common]
-origin: Pluralize
-pronunciation: 플루러라이즈
-mean: 복수의
-relation: []
+hashTag: [pluralize.js,react-pluralize]
 slug: /P/Pluralize
 ---
-
-<content>
-
-
-<p>복수형.</p>
-<p><a href="https://github.com/blakeembrey/pluralize">참고 오픈소스 pluralize</a></p>
-<p><a href="https://github.com/tsmith123/react-pluralize">참고 오픈소스 react-pluralize </a></p>
-
-
-</content>
+Pluralize는 <span style="color:#FFBF00; font-weight:bold;">복수의</span>, 복수형 이라는 뜻입니다.
