@@ -18,7 +18,7 @@ Schema는 <span style="color:#FFBF00; font-weight:bold;">데이터 혹은 구조
 
 웹에서 주로 HTTP 프로토콜을 사용합니다.
 
-<img src="../../2TAT1C/Schema_1.png"></a>
+<img src="https://user-images.githubusercontent.com/41575415/98444217-ca010a00-2153-11eb-9dbe-16ad8790302c.png"></a>
 
 <h3>GRAHPQL SCHEMA</h3>
 
