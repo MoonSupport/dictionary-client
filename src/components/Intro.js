@@ -1,7 +1,6 @@
 import React from "react"
 import Layout from "./Layout"
 import { Typography, Button, makeStyles, Box, Link } from "@material-ui/core"
-
 const useStyles = makeStyles({
   title: {
     marginTop: 80
@@ -55,7 +54,7 @@ const Intro = () => {
             시험 시작
         </Button>
         </Link>
-        <Button className={classes.button} component="a" href="https://github.com/meotitda/DICTIONARY" style={buttonCommonStyle} variant="contained" color="secondary">
+        <Button className={classes.button} component="a" href="https://github.com/meotitda/DICTIONARY#dictionary" style={buttonCommonStyle} variant="contained" color="secondary">
           단어 목록
         </Button>
         <Button className={classes.button} component="a" href="https://github.com/meotitda/DICTIONARY/blob/master/docs/CONTRIBUTE.md" style={buttonCommonStyle} variant="contained" color="secondary">

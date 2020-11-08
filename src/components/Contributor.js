@@ -19,10 +19,10 @@ const Contributor = ({ users }) => {
 
     return (
         <>
-            <Box style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
+            <Box style={{ display: 'flex', alignItems: 'center', margin: '20px 0px' }}>
                 <img width="80vw" height="80vw" src="/tropy.png" />
                 <Box style={{ display: 'flex', flexDirection: 'column' }}>
-                    <Typography variant="h4" style={{ fontWeight: 'bold' }}>Project Contributor</Typography>
+                    <Typography variant="h4" style={{ fontWeight: 'bold' }}>프로젝트에 기여한 분들</Typography>
                 </Box>
             </Box>
 

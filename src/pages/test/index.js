@@ -1,100 +1,78 @@
-import React, { useState, useEffect } from "react";
-import { chunk, random, sampleSize } from "lodash";
-import { useStaticQuery } from "gatsby";
+import React from "react"
 import Layout from "../../components/Layout"
-import Test from "../../components/Test"
+import { Typography, Button, makeStyles, Box, Link } from "@material-ui/core"
 
-
-export default function FrontEndTestPage() {
-  const [questionMap, setQuestionMap] = useState()
-  const [questionss, setQuestionss] = useState()
-  const [answers, setAnswers] = useState()
-
-
-  const {
-    allMarkdownRemark: { nodes: allSamples },
-  } = useStaticQuery(graphql`
-      query samples {
-        allMarkdownRemark(filter: { frontmatter: {
-          label : {
-            regex: ""
-          }
-        } }) {
-          nodes {
-            frontmatter {
-              title
-              label
-              slug
-            }
-            html
-          }
-        }
-      }
-  `);
-
-  function trimWordFromBraket(title) {
-    if (!title) {
-      return;
-    }
-    let front = title;
-    let back = "";
-    if (typeof title === "string") {
-      if (title.includes("(")) {
-        front = title.split("(")[0];
-        back = title.split("(")[1].replace(")", "");
-      }
-    }
-    return [front, back];
+const useStyles = makeStyles({
+  title: {
+    marginTop: 80
+  },
+  subtitle1: {
+    marginTop: 20
+  },
+  subtitle2: {
+    marginTop: 20,
+    paddingTop: 40
+  },
+  layout: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '0px 80px'
+  },
+  buttonWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '20vh'
+  },
+  button: {
+    marginTop: 10,
+  },
+  footer: {
+    marginTop: 'auto',
+    marginBottom: 50
   }
+})
 
-  useEffect(() => {
-    const samples = sampleSize(allSamples, 50)
-    const tempQuestionss = chunk(samples, 5)
 
-    const tempAnswers = [];
+const buttonCommonStyle = {
+  width: 335,
+  height: 60,
+}
 
-    if (samples.length < 50) {
-      alert('문제가 부족합니다.')
-      window.close()
-    }
-    const tempQuestionMap = []
-    tempQuestionss.map((questions) => {
-      const answer = random(0, 4);
-      const question = questions[answer].html;
-      const [front, back] = trimWordFromBraket(
-        questions[answer].frontmatter.title
-      );
 
-      const frontRegex = new RegExp(front, "gi");
-      let formattedQuestion = question
-        .replace(frontRegex, "[ㅁㅁㅁ]")
-        .replace(questions[answer].frontmatter.mean, "[ㅁㅁㅁ]");
-      if (back) {
-        const backRegex = new RegExp(back, "gi");
-        formattedQuestion.replace(backRegex, "[ㅁㅁㅁ]");
-      }
-      tempQuestionMap.push({ title: questions[answer].frontmatter.title, question: formattedQuestion });
-      tempAnswers.push(answer);
-
-      setQuestionMap(tempQuestionMap)
-      setQuestionss(tempQuestionss)
-      setAnswers(tempAnswers)
-      return null
-    });
-    return [tempQuestionMap, tempQuestionss, tempAnswers];
-  }, []);
-
-  if (!questionMap || !questionss || !answers) {
-    return (
-      <div>
-        Loading
-      </div>
-    )
-  }
-
+const Test = () => {
+  const classes = useStyles()
   return (
     <Layout>
-      <Test questionMap={questionMap} questionss={questionss} answers={answers} />
-    </Layout>
+      <Link href="/" >
+        <img className={classes.subtitle1} src="/titleLogo.png" />
+      </Link>
+      <Typography className={classes.subtitle2} variant="h5" >시험 칠 타입을 선택해주세요! </Typography>
+      <Box className={classes.buttonWrapper}>
+        <Link href="/test/all" >
+          <Button className={classes.button} style={buttonCommonStyle} variant="contained" color="secondary">
+            All
+        </Button>
+        </Link>
+        <Link href="/test/frontend" >
+          <Button className={classes.button} style={buttonCommonStyle} variant="contained" color="secondary">
+            Frontend
+        </Button>
+        </Link>
+        <Link href="/test/backend" >
+          <Button className={classes.button} style={buttonCommonStyle} variant="contained" color="secondary">
+            Backend
+        </Button>
+        </Link>
+      </Box>
+      <a className={classes.footer} href="https://github.com/meotitda">
+        <img src="/footerLogo.png" />
+      </a>
+    </Layout >
   )
 }
+
+export default Test

@@ -2,11 +2,13 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { useLocation } from '@reach/router';
 import Helmet from "react-helmet"
 import { fetch } from 'whatwg-fetch'
-import { Box, Typography } from '@material-ui/core'
+import { Box, Link, Typography } from '@material-ui/core'
 import queryString from 'query-string';
+import HistoryIcon from '@material-ui/icons/History';
 import Contributor from '../../components/Contributor'
 import Rank from '../../components/Rank';
 import { floor } from 'lodash'
+import Help from '../../components/Help';
 
 
 
@@ -40,7 +42,11 @@ const Result = () => {
                 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
             </Helmet>
             <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-                <div style={{ display: 'flex', alignItems: 'center' }} id="create-kakao-link-btn" onClick={sendLink}>
+                <Link underline="hover" color="inherit" href="/" style={{ display: 'flex', alignItems: 'center', fontSize: '20px', marginLeft: '10px' }}>
+                    <HistoryIcon style={{ marginRight: 10 }} />
+                    처음으로
+                </Link>
+                <div style={{ cursor: "pointer", display: 'flex', alignItems: 'center', marginLeft: '20px' }} id="create-kakao-link-btn" onClick={sendLink}>
                     <img width="50vw"
                         src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
                     />
@@ -74,6 +80,7 @@ const Result = () => {
                     </Box>
                 </Box>
             </Box>
+            <Help />
             <Contributor users={users} />
         </>
     )
