@@ -42,7 +42,9 @@ const Test = ({ questionMap, questionss, answers }) => {
 
   return (
     <Paper style={{ width: '100%' }} elevation={0}>
-      <img className={classes.subtitle1} src="/titleLogo.png" />
+      <Link href="/" >
+        <img className={classes.subtitle1} src="/titleLogo.png" />
+      </Link>
       <Box component="a" href="/" className={classes.nav}>
         <Typography>
           첫 화면으로
