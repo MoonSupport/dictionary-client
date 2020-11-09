@@ -132,17 +132,10 @@ function sendLink() {
         },
         buttons: [
             {
-                title: '테스트하기',
+                title: '단어 시험 쳐보기',
                 link: {
                     mobileWebUrl: 'https://www.dictionarymoon.tk/',
                     webUrl: 'https://www.dictionarymoon.tk/',
-                },
-            },
-            {
-                title: 'GITHUB',
-                link: {
-                    mobileWebUrl: 'https://github.com/meotitda/DICTIONARY',
-                    webUrl: 'https://github.com/meotitda/DICTIONARY',
                 },
             },
         ],
