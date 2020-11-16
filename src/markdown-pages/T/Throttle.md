@@ -4,7 +4,7 @@ label: [Common,Frontend]
 hashTag: [github예제,Debounce,Lodash]
 slug: /T/Throttle
 ---
-<p>Throttle 는 입력 주기를 방해하지 않고, 일정 시간 동안의 입력을 모와서, 한번씩 출력을 제한한다.<br />
+<p>Throttle 는 입력 주기를 방해하지 않고, 일정 시간 동안의 입력을 모아서, 한번씩 출력을 제한한다.<br />
 예제 코드</p>
 <pre><code class="js language-js">var throttle = null;
 function keyUpFn(el) {
